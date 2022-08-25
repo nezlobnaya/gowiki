@@ -69,9 +69,17 @@ func saveHandler(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "/view/"+title, http.StatusFound)
 }
 
+func rootHandler(w http.ResponseWriter, r *http.Request) {
+	http.Redirect(w, r, "/view/", http.StatusFound)
+}
+
+const port = "8081"
+
 func main() {
+	http.HandleFunc("/", rootHandler)
 	http.HandleFunc("/view/", viewHandler)
 	http.HandleFunc("/edit/", editHandler)
 	http.HandleFunc("/save/", saveHandler)
+	log.Println("Listening on port", port)
 	log.Fatal(http.ListenAndServe(":8081", nil))
 }
