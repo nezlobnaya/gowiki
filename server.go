@@ -14,7 +14,7 @@ func handler(w http.ResponseWriter, r *http.Request) {
 
 const appPort = "8081"
 
-func main() {
+func Server() {
 	//The main function begins with a call to http.HandleFunc,
 	//which tells the http package to handle all requests to the web root ("/") with handler.
 	http.HandleFunc("/", handler)
