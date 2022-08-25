@@ -35,7 +35,7 @@ func viewPage(p *Page) {
 	fmt.Println(string(p.Body))
 }
 
-func main() {
+func Wiki() {
 	p1 := &Page{Title: "TestPage", Body: []byte("This is a sample Page.")}
 	p1.save()
 	p2, _ := loadPage("TestPage")
