@@ -53,7 +53,10 @@ func renderTemplate(w http.ResponseWriter, tmpl string, p *Page) {
 // }
 
 func makeHandler(fn func(http.ResponseWriter, *http.Request, string)) http.HandlerFunc {
-	return func(w http.ResponseWriter, r *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) { //The returned function is called a closure because
+		//it encloses values defined outside of it. In this case, the variable fn (the single argument to makeHandler)
+		//is enclosed by the closure. The variable fn will be one of our save, edit, or view handlers.
+
 		m := validPath.FindStringSubmatch(r.URL.Path)
 		if m == nil {
 			http.NotFound(w, r)
